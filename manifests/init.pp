@@ -156,6 +156,7 @@ class apache (
   }
 
   exec { "mkdir ${confd_dir}":
+    command => "mkdir -p ${confd_dir}",
     creates => $confd_dir,
     require => Package['httpd'],
   }
@@ -168,7 +169,7 @@ class apache (
   }
 
   if ! defined(File[$mod_dir]) {
-    exec { "mkdir ${mod_dir}":
+    exec { "/bin/mkdir ${mod_dir}":
       creates => $mod_dir,
       require => Package['httpd'],
     }

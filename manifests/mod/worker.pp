@@ -45,7 +45,7 @@ class apache::mod::worker (
   }
 
   case $::osfamily {
-    'redhat': {
+    'redhat','suse': {
       if versioncmp($apache_version, '2.4') >= 0 {
         ::apache::mpm{ 'worker':
           apache_version => $apache_version,
@@ -54,10 +54,10 @@ class apache::mod::worker (
       else {
         file_line { '/etc/sysconfig/httpd worker enable':
           ensure  => present,
-          path    => '/etc/sysconfig/httpd',
-          line    => 'HTTPD=/usr/sbin/httpd.worker',
-          match   => '#?HTTPD=/usr/sbin/httpd.worker',
-          require => Package['httpd'],
+          path    => '/etc/sysconfig/apache2',
+          line    => 'HTTPD=/usr/sbin/apache2.worker',
+          match   => '#?HTTPD=/usr/sbin/apache2.worker',
+          require => Package['apache2'],
           notify  => Class['apache::service'],
         }
       }
