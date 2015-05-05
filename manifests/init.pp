@@ -258,6 +258,12 @@ class apache (
         $scriptalias          = '/var/www/cgi-bin'
         $access_log_file      = 'access_log'
       }
+      'suse': {
+        $pidfile              = 'run/httpd.pid'
+        $error_log            = 'error_log'
+        $scriptalias          = '/var/www/cgi-bin'
+        $access_log_file      = 'access_log'
+      }
       'freebsd': {
         $pidfile              = '/var/run/httpd.pid'
         $error_log            = 'httpd-error.log'

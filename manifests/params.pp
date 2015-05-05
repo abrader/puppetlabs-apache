@@ -34,7 +34,7 @@ class apache::params inherits ::apache::version {
   } else {
     $verify_command = '/usr/sbin/apachectl -t'
   }
-  if $::osfamily == 'RedHat' or $::operatingsystem == 'amazon' {
+  if $::osfamily == 'RedHat' or $::osfamily == 'suse' or $::operatingsystem == 'amazon' {
     $user                 = 'apache'
     $group                = 'apache'
     $root_group           = 'root'

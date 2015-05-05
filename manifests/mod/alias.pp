@@ -10,6 +10,10 @@ class apache::mod::alias(
       true    => '/usr/share/httpd/icons',
       default => '/var/www/icons',
     },
+    'suse'  => $ver24 ? {
+      true    => '/usr/share/httpd/icons',
+      default => '/var/www/icons',
+    },
     'freebsd' => '/usr/local/www/apache24/icons',
     'gentoo'  => '/usr/share/apache2/icons',
   }

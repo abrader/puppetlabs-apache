@@ -43,7 +43,7 @@ class apache::mod::prefork (
   }
 
   case $::osfamily {
-    'redhat': {
+    'redhat', 'suse' : {
       if versioncmp($apache_version, '2.4') >= 0 {
         ::apache::mpm{ 'prefork':
           apache_version => $apache_version,
